@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>2048</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>2048</h1>
+      <div class="scores">
+        <div class="score-box">
+          <div class="label">PONTOS</div>
+          <div id="score">0</div>
+        </div>
+        <div class="score-box">
+          <div class="label">RECORDE</div>
+          <div id="best">0</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="top-row">
+      <p class="instructions">Junte os números para chegar ao <strong>2048</strong>!</p>
+      <button id="new-game-btn">Novo Jogo</button>
+    </div>
+
+    <div class="board-wrap">
+      <div id="grid-bg" class="grid-bg"></div>
+      <div id="tile-container" class="tile-container"></div>
+      <div id="overlay" class="overlay hidden">
+        <div class="overlay-content">
+          <p id="overlay-message"></p>
+          <button id="overlay-btn">Tentar de novo</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-hint">Use as setas do teclado ou deslize o dedo (touch) para jogar.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

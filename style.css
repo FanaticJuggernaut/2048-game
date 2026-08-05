@@ -1,0 +1,216 @@
+:root {
+  --bg: #faf8ef;
+  --board-bg: #bbada0;
+  --cell-bg: rgba(238, 228, 218, 0.35);
+  --text-dark: #776e65;
+  --text-light: #f9f6f2;
+  --accent: #8f7a66;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-dark);
+}
+
+.scores {
+  display: flex;
+  gap: 8px;
+}
+
+.score-box {
+  background: var(--board-bg);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.score-box .label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #eee4da;
+  letter-spacing: 0.5px;
+}
+
+.score-box div:last-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.instructions {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+#new-game-btn {
+  background: var(--accent);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+#new-game-btn:hover {
+  background: #75655a;
+}
+
+.board-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--board-bg);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.grid-bg .cell {
+  background: var(--cell-bg);
+  border-radius: var(--radius);
+}
+
+.tile-container {
+  position: absolute;
+  inset: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.tile {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 32px;
+  transition: top 0.1s ease-in-out, left 0.1s ease-in-out;
+  animation: pop 0.15s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tile-2 { background: #eee4da; color: var(--text-dark); }
+.tile-4 { background: #ede0c8; color: var(--text-dark); }
+.tile-8 { background: #f2b179; color: var(--text-light); }
+.tile-16 { background: #f59563; color: var(--text-light); }
+.tile-32 { background: #f67c5f; color: var(--text-light); }
+.tile-64 { background: #f65e3b; color: var(--text-light); }
+.tile-128 { background: #edcf72; color: var(--text-light); font-size: 28px; }
+.tile-256 { background: #edcc61; color: var(--text-light); font-size: 28px; }
+.tile-512 { background: #edc850; color: var(--text-light); font-size: 28px; }
+.tile-1024 { background: #edc53f; color: var(--text-light); font-size: 24px; }
+.tile-2048 { background: #edc22e; color: var(--text-light); font-size: 24px; box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.7); }
+.tile-super { background: #3c3a32; color: var(--text-light); font-size: 22px; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(238, 228, 218, 0.85);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content p {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+#overlay-btn {
+  background: var(--accent);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#overlay-btn:hover {
+  background: #75655a;
+}
+
+.footer-hint {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dark);
+  margin-top: 16px;
+  opacity: 0.7;
+}
+
+@media (max-width: 420px) {
+  h1 { font-size: 36px; }
+  .tile { font-size: 24px; }
+}
